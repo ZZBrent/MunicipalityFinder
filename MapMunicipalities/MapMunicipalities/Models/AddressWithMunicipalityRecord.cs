@@ -8,12 +8,14 @@ namespace MapMunicipalities.Models
 {
     internal class AddressWithMunicipalityRecord
     {
-        public AddressWithMunicipalityRecord(string address, string municipality)
+        public AddressWithMunicipalityRecord(string address, string municipality, string zipCode)
         {
             Address = address;
             Municipality = municipality;
+            ZipCode = zipCode;
         }
         public string Address { get; set; }
         public string Municipality { get; set; }
+        public string ZipCode { get; set; }
     }
 }
