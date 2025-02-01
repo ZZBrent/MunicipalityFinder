@@ -10,7 +10,7 @@ class Program
     static async Task Main(string[] args)
     {
         var inputFilePath = "addresses.csv";
-        var outputFilePath = "addresses_with_municipality.csv";
+        var outputFilePath = "addresses_with_municip_and_zip.csv";
 
         var addresses = ReadAddressesFromCsv(inputFilePath);
         var httpClient = new HttpClient();
@@ -18,8 +18,8 @@ class Program
         List<AddressWithMunicipalityRecord> fullRecords = new List<AddressWithMunicipalityRecord>();
         foreach (var addressRecord in addresses)
         {
-            var countySubdivision = await GetCountySubdivisionAsync(httpClient, addressRecord.Address);
-            AddressWithMunicipalityRecord fullRecord = new AddressWithMunicipalityRecord(addressRecord.Address, countySubdivision);
+            var municipalityAndZip = await GetCountySubdivisionAndZipAsync(httpClient, addressRecord.Address);
+            AddressWithMunicipalityRecord fullRecord = new AddressWithMunicipalityRecord(addressRecord.Address, municipalityAndZip.Item1, municipalityAndZip.Item2);
             fullRecords.Add(fullRecord);
         }
 
@@ -33,21 +33,44 @@ class Program
         return csv.GetRecords<AddressRecord>().ToList();
     }
 
-    static async Task<string> GetCountySubdivisionAsync(HttpClient httpClient, string address)
+    static async Task<Tuple<string,string>> GetCountySubdivisionAndZipAsync(HttpClient httpClient, string address)
     {
         var requestUri = $"https://geocoding.geo.census.gov/geocoder/geographies/onelineaddress?address={Uri.EscapeDataString(address)}&benchmark=Public_AR_Current&vintage=Current_Current&format=json";
         var response = await httpClient.GetStringAsync(requestUri);
         var jsonDoc = JsonDocument.Parse(response);
 
-        var countySubdivision = jsonDoc.RootElement
+        string? countySubdivision = "";
+        try
+        {
+            countySubdivision = jsonDoc.RootElement
+                .GetProperty("result")
+                .GetProperty("addressMatches")[0]
+                .GetProperty("geographies")
+                .GetProperty("County Subdivisions")[0]
+                .GetProperty("NAME")
+                .GetString();
+        }
+        catch
+        {
+
+        }
+
+        string? zipCode = "";
+        try
+        {
+            zipCode = jsonDoc.RootElement
             .GetProperty("result")
             .GetProperty("addressMatches")[0]
-            .GetProperty("geographies")
-            .GetProperty("County Subdivisions")[0]
-            .GetProperty("NAME")
+            .GetProperty("addressComponents")
+            .GetProperty("zip")
             .GetString();
+        }
+        catch
+        {
 
-        return countySubdivision;
+        }
+
+        return new Tuple<string,string>(countySubdivision ?? "", zipCode ?? "");
     }
 
     static void WriteAddressesToCsv(string filePath, List<AddressWithMunicipalityRecord> addresses)

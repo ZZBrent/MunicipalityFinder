@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "JKQD1q38/6Q=",
+  "dgSpecHash": "XXUNwrigQuw=",
   "success": true,
-  "projectFilePath": "C:\\Users\\itbwk\\source\\repos\\MapMunicipalities\\MapMunicipalities\\MapMunicipalities.csproj",
+  "projectFilePath": "C:\\Users\\Brent\\Source\\Repos\\MunicipalityFinder\\MapMunicipalities\\MapMunicipalities\\MapMunicipalities.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\itbwk\\.nuget\\packages\\csvhelper\\12.1.2\\csvhelper.12.1.2.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\microsoft.csharp\\4.4.0\\microsoft.csharp.4.4.0.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\optivem.common.serialization\\1.0.10\\optivem.common.serialization.1.0.10.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\optivem.infrastructure.serialization.csvhelper\\1.0.10\\optivem.infrastructure.serialization.csvhelper.1.0.10.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\system.io.pipelines\\9.0.1\\system.io.pipelines.9.0.1.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\system.reflection.typeextensions\\4.4.0\\system.reflection.typeextensions.4.4.0.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\system.text.encodings.web\\9.0.1\\system.text.encodings.web.9.0.1.nupkg.sha512",
-    "C:\\Users\\itbwk\\.nuget\\packages\\system.text.json\\9.0.1\\system.text.json.9.0.1.nupkg.sha512"
+    "C:\\Users\\Brent\\.nuget\\packages\\csvhelper\\12.1.2\\csvhelper.12.1.2.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\microsoft.csharp\\4.4.0\\microsoft.csharp.4.4.0.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\optivem.common.serialization\\1.0.10\\optivem.common.serialization.1.0.10.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\optivem.infrastructure.serialization.csvhelper\\1.0.10\\optivem.infrastructure.serialization.csvhelper.1.0.10.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\system.io.pipelines\\9.0.1\\system.io.pipelines.9.0.1.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\system.reflection.typeextensions\\4.4.0\\system.reflection.typeextensions.4.4.0.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\system.text.encodings.web\\9.0.1\\system.text.encodings.web.9.0.1.nupkg.sha512",
+    "C:\\Users\\Brent\\.nuget\\packages\\system.text.json\\9.0.1\\system.text.json.9.0.1.nupkg.sha512"
   ],
   "logs": []
 }
