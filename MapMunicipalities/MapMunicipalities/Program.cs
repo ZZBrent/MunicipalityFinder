@@ -18,9 +18,18 @@ class Program
         List<AddressWithMunicipalityRecord> fullRecords = new List<AddressWithMunicipalityRecord>();
         foreach (var addressRecord in addresses)
         {
-            var municipalityAndZip = await GetCountySubdivisionAndZipAsync(httpClient, addressRecord.Address);
-            AddressWithMunicipalityRecord fullRecord = new AddressWithMunicipalityRecord(addressRecord.Address, municipalityAndZip.Item1, municipalityAndZip.Item2);
-            fullRecords.Add(fullRecord);
+            if(addressRecord.Address is null)
+            {
+                // Need whitespacde for missing addresses so the results match perfectly with the original 
+                fullRecords.Add(new AddressWithMunicipalityRecord());
+            }
+            else
+            {
+                var municipalityAndZip = await GetCountySubdivisionAndZipAsync(httpClient, addressRecord.Address);
+                AddressWithMunicipalityRecord fullRecord = new AddressWithMunicipalityRecord(addressRecord.Address, municipalityAndZip.Item1, municipalityAndZip.Item2);
+                fullRecords.Add(fullRecord);
+                Console.WriteLine($"{addressRecord.Address} has been processed.");
+            }
         }
 
         WriteAddressesToCsv(outputFilePath, fullRecords);
