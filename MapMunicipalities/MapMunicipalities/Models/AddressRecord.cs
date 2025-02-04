@@ -8,7 +8,7 @@ namespace MapMunicipalities.Models
 {
     public class AddressRecord
     {
-        public string Address { get; set; }
+        public string? Address { get; set; }
     }
 
 }
